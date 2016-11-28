@@ -9,5 +9,9 @@ namespace ComicBookGallery.Controllers
     public class ComicBookController : Controller
         // : Controller - > inherit from base class
     {
+        public string Detail()
+        {
+            return "Hello from comic books controller!";
+        }
     }
 }
