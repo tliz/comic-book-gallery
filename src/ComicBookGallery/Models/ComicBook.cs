@@ -16,5 +16,21 @@ namespace ComicBookGallery.Models
         // change artist property to be array of artists
         public Artist[] Artists { get; set; }
         public bool Favorite { get; set; }
+
+        public string DisplayText
+        {
+            get // makes it read-only
+            {
+                return SeriesTitle + " #" + IssueNumber;
+            }
+        }
+
+        public string CoverImageFileName
+        {
+            get
+            {
+                return SeriesTitle.Replace(" ", "-").ToLower() + "-" + IssueNumber + ".jpg";
+            }
+        }
     }
 }
