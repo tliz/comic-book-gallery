@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComicBookGallery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -41,19 +42,48 @@ namespace ComicBookGallery.Controllers
 
         public ActionResult Detail()
         {
-            // Properties
-            ViewBag.SeriesTitle = "The Amazing Spider-Man";
-            ViewBag.IssueNumber = 700;
-            ViewBag.Description = "<p>Final issue! Witness the final hoour of Doctor Octopus'life and his one, last, greate act of revenge! Even if Spider-Man survives... <strong> will Peter Parker?</strong></p>";
-            ViewBag.Artists = new string[]
+            //instantiate combic book object
+          //  var comicBook = new ComicBook();
+        
+        // SETTING INSTANCE PROPERTY VALUES:
+            //1. use comicBook variable to set properties
+            //comicBook.SeriesTitle = "";
+
+            // 2. or object initializer syntax
+             var comicBook = new ComicBook()
+             {
+                 SeriesTitle = "The Amazing Spider-Man",
+                 IssueNumber = 700,
+                 DescriptionHtml = "<p>Final issue! Witness the final hoour of Doctor Octopus'life and his one, last, greate act of revenge! Even if Spider-Man survives... <strong> will Peter Parker?</strong></p>",
+                 
+                // instantiate array
+                Artists = new Artist[]
                 {
-                    "Script: Dan Slott",
-                    "Pencils: Humberto Ramos",
-                    "Inks: Victor Olazaba",
-                    "Colors: Edgar Delgado",
-                    "Letters: Chris Eliopoulos"
-                };
-            return View();
+                    new Artist() { Name = "Dan Slott", Role = "Script"},
+                    new Artist() { Name = "Humberto Ramos", Role = "Pencils"},
+                    new Artist() { Name = "Victor Olazaba", Role = "Inks"},
+                    new Artist() { Name = "Edgar Delgado", Role = "Colors"},
+                    new Artist() { Name = "Chris Eliopoulos", Role = "Letters"}
+                }
+        };
+
+            // Properties
+            //ViewBag.SeriesTitle = "The Amazing Spider-Man";
+            //ViewBag.IssueNumber = 700;
+            //ViewBag.Description = "<p>Final issue! Witness the final hoour of Doctor Octopus'life and his one, last, greate act of revenge! Even if Spider-Man survives... <strong> will Peter Parker?</strong></p>";
+            //ViewBag.Artists = new string[]
+            //    {
+            //        "Script: Dan Slott",
+            //        "Pencils: Humberto Ramos",
+            //        "Inks: Victor Olazaba",
+            //        "Colors: Edgar Delgado",
+            //        "Letters: Chris Eliopoulos"
+            //    };
+            //return View();
+
+            // Pass comic book model to view
+            // ViewBag.ComicBook = comicBook;
+            return View(comicBook);
         }
     }
 }
